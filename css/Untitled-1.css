@@ -1,0 +1,260 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-color: rgb(20, 19, 19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1
+{
+    color: rgb(197, 146, 69);
+    position: absolute;
+    top: 20px;
+    left: 750px; 
+    font-size: 55px;
+    text-shadow: 1px 0.5px 0px rgb(236, 203, 12), 6px 5px 0px rgba(182, 131, 37, 0.384);
+}
+
+.cube
+{
+    position: relative;
+    top: -30px;
+    left: 850px;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate
+{
+0%
+    {
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+100%
+    {
+        transform: rotateX(-30deg) rotateY(360deg); 
+    }
+    
+}
+
+.cube div
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube div span
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515,#C59245);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.cube div span h2
+{
+    position: absolute;
+    font-size: 10em;
+    color: #fff;
+    transform: translateZ(50px);
+}
+
+.cube div span h2:nth-child(1)
+{
+    transform: translateZ(0) translateY(20px);
+    color: rgba(0,0,0,0.5);
+    filter: blur(10px);
+}
+
+.top
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+.top::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: #C59245;
+    transform: translateZ(-380px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(170, 136, 44, 6),
+    0 0 200px rgba(170, 136, 44, 8),
+    0 0 300px rgba(170, 136, 44, 10),
+    0 0 400px rgba(170, 136, 44, 12),
+    0 0 500px rgb(170, 136, 48);
+}
+
+.container
+{
+    position: relative;
+    left: -200px;
+    min-width: 300px;
+    min-height: 400px;
+    background: #333;
+    padding: 40px 30px 30px;
+    border-radius: 20px;
+    box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25), 10px 10px 70px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.5), inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.calculator
+{
+    position: relative;
+    display: grid;
+}
+
+.calculator .value
+{
+    position: relative;
+    grid-column: span 4;
+    height: 100px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #a7af7c;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.74);
+    text-align: right;
+    padding: 10px;
+    font-size: 2em;
+}
+
+.calculator span
+{
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 80px;
+    margin: 8px;
+    background: linear-gradient(180deg, #2f2f2f,#3f3f3f);
+    box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+    10px 20px 25px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    border-radius: 10px;
+}
+
+.calculator span::before
+{
+    content: '';
+    position: absolute;
+    background: linear-gradient(90deg, #2d2d2d,#4d4d4d);
+    top: 3px;
+    left: 4px;
+    bottom: 14px;
+    right: 12px;
+    background: linear-gradient(90deg,#2d2d2d,#4d4d4d);
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.1),
+    10px 5px 10px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid #0004;
+    border-bottom: 1px solid #0004;
+    border-top: 1px solid #0009;
+}
+
+.calculator span:active
+{
+    filter: brightness(1.5);
+}
+
+.calculator span i
+{
+    position: relative;
+    font-style: normal;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.calculator .clear
+{
+    grid-column: span 2;
+    width: 185px;
+    background: #f00;
+}
+
+.calculator .clear::before
+{
+    background: linear-gradient(90deg, #d20000, #ffffff5c);
+    border-left: 1px solid #fff4;
+    border-bottom: 1px solid #fff4;
+    border-top: 1px solid #fff4;
+}
+
+.calculator .plus
+{
+    grid-row: span 2;
+    height: 175px;
+}
+/* pour le mode sombre pas au point */
+.btn
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #333;
+    font-size: 1.5em;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25),
+    5px 5px 30px rgba(0, 0, 0, 0.25),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn strong
+{
+    display: none;
+}
+
+.btn strong:nth-child(1)
+{
+    display: block;
+}
+
+body.light .btn strong:nth-child(1)
+{
+    display: none;
+}
+/* pour le mode sombre pas au point */
